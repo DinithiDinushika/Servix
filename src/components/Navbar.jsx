@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import ServixLogo from "../assets/Servix Logo2.png";
 
-export default function Navbar({ onLoginClick, loggedIn, onProfileClick, showProfile, onNavClick }) {
+export default function Navbar({ onLoginClick, loggedIn, onProfileClick, showProfile, onNavClick, onPrivacyClick }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -53,6 +53,12 @@ export default function Navbar({ onLoginClick, loggedIn, onProfileClick, showPro
                 {link.label}
               </button>
             ))}
+            <button
+              onClick={() => { onPrivacyClick?.(); setMenuOpen(false); }}
+              className="text-white/80 hover:text-white text-sm font-medium transition-colors duration-200 cursor-pointer"
+            >
+              Privacy
+            </button>
           </div>
 
           {/* Right side */}
@@ -104,6 +110,12 @@ export default function Navbar({ onLoginClick, loggedIn, onProfileClick, showPro
                 {link.label}
               </button>
             ))}
+            <button
+              onClick={() => { onPrivacyClick?.(); setMenuOpen(false); }}
+              className="block w-full text-left px-3 py-3 text-white/80 hover:text-white text-sm font-medium border-b border-white/5 transition-colors"
+            >
+              Privacy
+            </button>
             {!loggedIn && (
               <button
                 onClick={() => { onLoginClick(); setMenuOpen(false); }}
